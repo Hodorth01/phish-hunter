@@ -8,8 +8,10 @@ interface EmailPreviewProps {
   playerName: string;
   answer: Answer | null;
   usedHint: boolean;
+  hasNext: boolean;
   onAnswer: (choice: Choice) => void;
   onRevealHint: () => void;
+  onNext: () => void;
 }
 
 function Icon({ name }: { name: "alert" | "check" | "clip" }) {
@@ -66,8 +68,10 @@ export default function EmailPreview({
   playerName,
   answer,
   usedHint,
+  hasNext,
   onAnswer,
   onRevealHint,
+  onNext,
 }: EmailPreviewProps) {
   const isAnswered = Boolean(answer);
 
@@ -153,22 +157,33 @@ export default function EmailPreview({
       {/* verdict / actions */}
       <div className="border-t border-mail-border px-5 py-4">
         {isAnswered && answer ? (
-          <div
-            className={`rise-in rounded-xl px-4 py-3 ${
-              answer.correct ? "bg-[#1c3527]" : "bg-[#3a1d24]"
-            }`}
-          >
-            <p
-              className={`text-[13px] font-medium ${
-                answer.correct ? "text-[#8fe3b0]" : "text-[#ff8fa3]"
+          <div className="space-y-3">
+            <div
+              className={`rise-in rounded-xl px-4 py-3 ${
+                answer.correct ? "bg-[#1c3527]" : "bg-[#3a1d24]"
               }`}
             >
-              {answer.correct ? "✓ Correct" : "✕ Wrong"} —{" "}
-              {answer.pointsEarned > 0 ? `+${answer.pointsEarned}` : answer.pointsEarned} pts
-            </p>
-            <p className="mt-1 text-[13px] leading-relaxed text-mail-text">
-              {email.explanation}
-            </p>
+              <p
+                className={`text-[13px] font-medium ${
+                  answer.correct ? "text-[#8fe3b0]" : "text-[#ff8fa3]"
+                }`}
+              >
+                {answer.correct ? "✓ Correct" : "✕ Wrong"} —{" "}
+                {answer.pointsEarned > 0 ? `+${answer.pointsEarned}` : answer.pointsEarned} pts
+              </p>
+              <p className="mt-1 text-[13px] leading-relaxed text-mail-text">
+                {email.explanation}
+              </p>
+            </div>
+            {hasNext && (
+              <button
+                type="button"
+                onClick={onNext}
+                className="w-full rounded-full border border-mail-accent/60 bg-mail-accent/15 px-4 py-2.5 text-[13px] font-medium text-mail-accent transition hover:bg-mail-accent/25"
+              >
+                Next email →
+              </button>
+            )}
           </div>
         ) : (
           <div className="space-y-3">

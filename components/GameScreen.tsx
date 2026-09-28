@@ -102,6 +102,15 @@ export default function GameScreen() {
   const unread = activeEmails.filter((e) => !answers[e.id]).length;
   const isReadOnlyView = viewLevelId !== activeLevelId;
   const selectedEmail: PhishEmail | null = selectedId ? EMAIL_MAP[selectedId] ?? null : null;
+  const nextUnclassifiedId =
+    viewEmails.find((e) => !answers[e.id])?.id ?? null;
+  const hasNext = Boolean(selectedEmail && answers[selectedEmail.id] && nextUnclassifiedId);
+
+  const goNext = () => {
+    if (!nextUnclassifiedId) return;
+    if (!openedAtRef.current[nextUnclassifiedId]) openedAtRef.current[nextUnclassifiedId] = Date.now();
+    setSelectedId(nextUnclassifiedId);
+  };
 
   const handleSelect = useCallback(
     (id: string) => {
@@ -369,8 +378,10 @@ export default function GameScreen() {
                       playerName={name}
                       answer={answers[selectedEmail.id] ?? null}
                       usedHint={Boolean(usedHint[selectedEmail.id])}
+                      hasNext={hasNext}
                       onAnswer={answer}
                       onRevealHint={revealHint}
+                      onNext={goNext}
                     />
                   </>
                 ) : (
