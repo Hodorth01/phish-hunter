@@ -40,7 +40,7 @@ export default function LoginScreen() {
             </span>
           </div>
 
-          <h1 className="flicker font-display text-4xl font-bold tracking-[0.15em] text-neon text-glow sm:text-5xl">
+          <h1 className="flicker font-display text-3xl font-bold tracking-[0.08em] text-neon text-glow sm:text-5xl sm:tracking-[0.15em]">
             PHISH<span className="text-cyan">_</span>
             <span className="cursor-blink text-cyan">HUNTER</span>
           </h1>
