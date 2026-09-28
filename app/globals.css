@@ -1,26 +1,158 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-abyss: #04080a;
+  --color-panel: #071210;
+  --color-panel-2: #0a1915;
+  --color-line: #12352a;
+  --color-line-bright: #1c5a42;
+  --color-neon: #00ff41;
+  --color-cyan: #00e5ff;
+  --color-alert: #ff2e4d;
+  --color-amber: #ffb020;
+  --color-dim: #4d6b63;
+  --color-text: #c8ffe0;
+  --color-text-dim: #7fa396;
+
+  /* dark Gmail-style mail client */
+  --color-mail-bg: #131318;
+  --color-mail-surface: #1f2023;
+  --color-mail-surface-2: #28292d;
+  --color-mail-hover: #242528;
+  --color-mail-border: #2e2f33;
+  --color-mail-text: #e8eaed;
+  --color-mail-muted: #9aa0a6;
+  --color-mail-accent: #8ab4f8;
+  --color-mail-accent-soft: #2b3a53;
+
+  --font-display: var(--font-orbitron), "Segoe UI", sans-serif;
+  --font-mono: var(--font-share-tech-mono), "Consolas", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-abyss);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+}
+
+/* Thin neon grid floor */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+/* Faint CRT scanlines */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.28) 0px,
+    rgba(0, 0, 0, 0.28) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Terminal panel with clipped corner */
+.panel {
+  border: 1px solid var(--color-line);
+  background: linear-gradient(180deg, var(--color-panel) 0%, var(--color-panel-2) 100%);
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 65, 0.04),
+    0 0 26px rgba(0, 255, 65, 0.07);
+}
+
+.panel-corner {
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+}
+
+.glow-green {
+  box-shadow: 0 0 18px rgba(0, 255, 65, 0.35);
+}
+.glow-cyan {
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.35);
+}
+.glow-red {
+  box-shadow: 0 0 18px rgba(255, 46, 77, 0.4);
+}
+
+/* Subtle text glow */
+.text-glow {
+  text-shadow: 0 0 8px currentColor;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.6;
+  }
+  94% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0.8;
+  }
+  98% {
+    opacity: 1;
+  }
+}
+.flicker {
+  animation: flicker 6s linear infinite;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise-in {
+  animation: rise-in 0.35s ease-out both;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.toast-in {
+  animation: toast-in 0.25s ease-out both;
+}
+
+::selection {
+  background: rgba(0, 255, 65, 0.25);
+}
+
+input::placeholder {
+  color: var(--color-dim);
 }
