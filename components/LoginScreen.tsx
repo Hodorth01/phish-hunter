@@ -50,11 +50,11 @@ export default function LoginScreen() {
           </p>
 
           <p className="mt-6 text-[13px] leading-relaxed text-text/90">
-            15 emails. 3 threat levels —{" "}
+            15 emails. 3 threat levels{" "}
             <span className="text-neon">RECRUIT</span> ·{" "}
             <span className="text-cyan">AGENT</span> ·{" "}
             <span className="text-alert">ELITE</span>. Classify each message as
-            phishing or safe, use hints if you get stuck — but every hint cuts
+            phishing or safe, use hints if you get stuck but every hint cuts
             your reward. Your score and time are recorded when the hunt ends.
           </p>
 
