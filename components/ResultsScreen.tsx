@@ -42,7 +42,7 @@ export default function ResultsScreen() {
   const classified = result.answers.length;
 
   return (
-    <div className="relative flex flex-1 overflow-y-auto p-6">
+    <div className="relative flex flex-1 p-6">
       <div className="bg-grid fixed inset-0 pointer-events-none" />
       <div className="scanlines fixed inset-0 pointer-events-none" />
 

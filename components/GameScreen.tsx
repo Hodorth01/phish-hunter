@@ -211,7 +211,7 @@ export default function GameScreen() {
   }
 
   return (
-    <div className="relative flex flex-1 justify-center overflow-y-auto p-4 sm:p-6">
+    <div className="relative flex flex-1 justify-center p-4 sm:p-6">
       <div className="bg-grid fixed inset-0 pointer-events-none" />
       <div className="scanlines fixed inset-0 pointer-events-none" />
 
