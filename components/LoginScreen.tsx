@@ -99,7 +99,7 @@ export default function LoginScreen() {
         </div>
 
         <p className="mt-4 text-center text-[10px] tracking-widest text-dim">
-          cyber0ne — JIC COLLEGE · BUILT FOR TRAINING, NOT FOR ATTACKS
+          cyber0ne — JIC · BUILT FOR TRAINING, NOT FOR ATTACKS
         </p>
       </div>
     </div>

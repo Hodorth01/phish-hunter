@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   title: "Phish Hunter | Cyber0ne — JIC",
   description:
     "Phish Hunter — an interactive phishing recognition game by Cyber0ne, the cybersecurity club of JIC.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -162,7 +162,7 @@ export default function ResultsScreen() {
         </div>
 
         <p className="pb-4 text-center text-[10px] tracking-widest text-dim">
-          cyber0ne — JIC COLLEGE · STAY SHARP, TRUST NOTHING
+          cyber0ne — JIC · STAY SHARP, TRUST NOTHING
         </p>
       </div>
     </div>
